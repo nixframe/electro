@@ -8,7 +8,7 @@ import pl.example.electro.repository.ManufacturerRepository;
 import java.util.List;
 
 @Service
-public class ManufacturerServiceImplementation implements MAnufacturerService {
+public class ManufacturerServiceImplementation implements ManufacturerService {
 
     private ManufacturerRepository manufacturerRepository;
 
@@ -18,9 +18,10 @@ public class ManufacturerServiceImplementation implements MAnufacturerService {
     }
 
     @Override
-    public List<Manufacturer> getAll() {
+    public List<Manufacturer> findAll() {
         return manufacturerRepository.findAll();
     }
+
 
     @Override
     public Manufacturer save(Manufacturer manufacturer) {

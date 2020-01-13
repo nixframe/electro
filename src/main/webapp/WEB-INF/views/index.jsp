@@ -5,14 +5,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <c:import url="/WEB-INF/views/parts/head.jsp"/>
 </head>
-<body>
 
+<body class="text-center">
+<div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
 
+    <c:import url="/WEB-INF/views/parts/header.jsp"/>
 
-HelloWorld
+    <main role="main" class="inner cover">
+        <div class="row">
+            <c:import url="/WEB-INF/views/parts/nav.jsp"/>
+            <div class="col-lg-10">
+                Hello
+            </div>
+        </div>
+    </main>
 
-
+    <c:import url="/WEB-INF/views/parts/foot.jsp"/>
+</div>
 </body>
 </html>
+

@@ -1,27 +1,39 @@
 package pl.example.electro.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Email
+    @NotBlank
+    @Column(nullable = false, unique = true)
     private String mail;
+
+    @NotBlank
     private String password;
 
     private boolean activated;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String surname;
+
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Adres adres;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     public String getFullName() {

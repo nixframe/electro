@@ -7,6 +7,9 @@ import pl.example.electro.entity.User;
 import pl.example.electro.repository.ProductRepository;
 import pl.example.electro.repository.ReviewRepository;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 @Service
 public class ProductServiceImplementation implements ProductService {
     private ProductRepository productRepository;

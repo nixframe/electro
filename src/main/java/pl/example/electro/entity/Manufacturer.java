@@ -1,15 +1,18 @@
 package pl.example.electro.entity;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "manufacturers")
+@Table(name = "manufacturer")
 public class Manufacturer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String name;
 
     public Long getId() {

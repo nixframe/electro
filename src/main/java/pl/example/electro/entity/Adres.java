@@ -8,6 +8,9 @@ import javax.validation.constraints.Pattern;
 @Table(name = "adres")
 public class Adres {
 
+    private static final String BLANK_MESSAGE = "Field cannot be empty";
+    private static final String INVALID_PATTERN = "Invalid pattern";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,10 +18,24 @@ public class Adres {
     @OneToOne(mappedBy = "adres")
     private User user;
 
+    @NotBlank(message = BLANK_MESSAGE)
     private String street;
+
+    @Column(name = "house_number")
+    @NotBlank(message = BLANK_MESSAGE)
+    @Pattern(regexp = "^\\d+[a-zA-Z]?$", message = INVALID_PATTERN)
     private String houseNumber;
+
+    @Column(name = "apartment_number")
+    @Pattern(regexp = "^\\d*$", message =INVALID_PATTERN)
     private String aptNumber;
+
+    @NotBlank(message = BLANK_MESSAGE)
     private String city;
+
+    @Column(name = "post_code")
+    @NotBlank(message = BLANK_MESSAGE)
+    @Pattern(regexp = "^\\d{2}-\\d{3}$", message = INVALID_PATTERN)
     private String postalCode;
 
     public Long getId() {
