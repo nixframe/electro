@@ -3,8 +3,10 @@ package pl.example.electro.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.example.electro.entity.Manufacturer;
+import pl.example.electro.entity.Product;
 import pl.example.electro.service.ManufacturerService;
 import pl.example.electro.service.ProductService;
 
@@ -22,8 +24,14 @@ public class HomeController {
         this.manufacturerService = manufacturerService;
     }
 
+    @ModelAttribute("sampleProducts")
+    public List<Product> getSampleProducts() {
+        return productService.getSampleProducts();
+    }
+
     @RequestMapping("")
     public String homePage(Model model, HttpSession session) {
+        model.addAttribute("highPrice", productService.getHigh());
         List<Manufacturer> manufacturers = manufacturerService.findAll();
         session.setAttribute("manufacturers", manufacturers);
         return "index";

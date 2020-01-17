@@ -7,4 +7,6 @@ import pl.example.electro.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByMail(String mail);
+
+    User findFirstByMail(String mail);
 }

@@ -14,11 +14,11 @@ public class Cart {
 
     private List<CartItem> cartItemsList = new ArrayList<>();
 
-    public List<CartItem> getCartItems() {
+    public List<CartItem> getCartItemsList() {
         return cartItemsList;
     }
 
-    public void setCartItems(List<CartItem> cartItems) {
-        this.cartItemsList = cartItems;
+    public void setCartItemsList(List<CartItem> cartItemsList) {
+        this.cartItemsList = cartItemsList;
     }
 }

@@ -11,7 +11,10 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query(value = "SELECT max(price) FROM Product")
+    @Query("SELECT max(price) FROM Product")
     BigDecimal high();
 
+    List<Product> findFirst3ByOrderByCreated();
+
+    Product findFirstById(Long Id);
 }

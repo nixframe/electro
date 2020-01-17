@@ -18,37 +18,39 @@
             <c:import url="/WEB-INF/views/parts/nav.jsp"/>
             <%--MAIN DIV--%>
             <div class="col-lg-5">
-                <c:forEach items="${sampleProducts}" var="product">
+                <c:forEach items="${products}" var="product">
 
                     <div class="col-md-5">
                         <div class="card h-50">
-                            <a href="<c:url value="/product/${product.id}"/>" class="thumbnail">
+                            <a href="<c:url value="/prod/${product.id}"/>" class="thumbnail">
                                 <img class="card-img-top thumbnail" src="${product.picture}" alt="No image">
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="<c:url value="/product/${product.id}"/>">
+                                    <a href="<c:url value="/prod/${product.id}"/>">
                                         <c:out value="${product.displayName}"/>
                                     </a>
                                 </h4>
                                 <div class="row">
                                     <div class="col-6"><h5><c:out value="${product.price}"/></h5></div>
                                     <div class="col-6">
-                                        <a href="<c:url value="/cart/add?id=${product.id}"/>" class="btn btn-primary btn-sm" role="button">
+                                        <a href="<c:url value="/cart/add?id=${product.id}"/>"
+                                           class="btn btn-primary btn-sm" role="button">
                                             Add to cart
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted"><c:choose>
-                                    <c:when test="${product.rating < 1}">&#9734; &#9734; &#9734; &#9734; &#9734;</c:when>
-                                    <c:when test="${product.rating < 2}">&#9733; &#9734; &#9734; &#9734; &#9734;</c:when>
-                                    <c:when test="${product.rating < 3}">&#9733; &#9733; &#9734; &#9734; &#9734;</c:when>
-                                    <c:when test="${product.rating < 4}">&#9733; &#9733; &#9733; &#9734; &#9734;</c:when>
-                                    <c:when test="${product.rating < 5}">&#9733; &#9733; &#9733; &#9733; &#9734;</c:when>
-                                    <c:otherwise>&#9733; &#9733; &#9733; &#9733; &#9733;</c:otherwise>
-                                </c:choose></small>
+                                <small class="text-muted">
+                                    <c:choose>
+                                        <c:when test="${product.rating < 1}">&#9734; &#9734; &#9734; &#9734; &#9734;</c:when>
+                                        <c:when test="${product.rating < 2}">&#9733; &#9734; &#9734; &#9734; &#9734;</c:when>
+                                        <c:when test="${product.rating < 3}">&#9733; &#9733; &#9734; &#9734; &#9734;</c:when>
+                                        <c:when test="${product.rating < 4}">&#9733; &#9733; &#9733; &#9734; &#9734;</c:when>
+                                        <c:when test="${product.rating < 5}">&#9733; &#9733; &#9733; &#9733; &#9734;</c:when>
+                                        <c:otherwise>&#9733; &#9733; &#9733; &#9733; &#9733;</c:otherwise>
+                                    </c:choose></small>
                             </div>
                         </div>
                     </div>
