@@ -20,12 +20,9 @@ public class LoginRegisterController {
         this.userService = userService;
     }
 
-    @ModelAttribute("user")
-    public User getEmptyUser() {
-        return userService.getNewEmptyUser();
-    }
 
     // LOGIN
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getLoginPage() {
         return "login";
@@ -41,16 +38,17 @@ public class LoginRegisterController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showRegistrationForm(Model model) {
+        model.addAttribute("user", userService.getNewEmptyUser());
         return "register";
     }
 
     @PostMapping("/register")
-    public String showRegistrationForm(Model model, @Validated({UserRegisterValidationGroup.class}) User user, BindingResult bindingResult, @RequestParam("password2") String password2) {
+    public String showRegistrationForm(@Validated(UserRegisterValidationGroup.class) @ModelAttribute("user") User user, BindingResult bindingResult, @RequestParam("password2") String password2) {
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        if (userService.isUserInDB(user.getMail())) {
-            bindingResult.addError(new FieldError("user", "mail", "Email is already in use"));
+        if (userService.isUserInDB(user.getEmail()) != null) {
+            bindingResult.addError(new FieldError("user", "email", "Email is already in use"));
             return "register";
         }
         if (!user.getPassword().equals(password2)) {
@@ -59,7 +57,7 @@ public class LoginRegisterController {
         }
 
         userService.saveToDB(user);
-        return "login";
+        return "redirect:login";
     }
 
     // LOGOUT AND ACCESS ERROR

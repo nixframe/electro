@@ -6,6 +6,6 @@ import pl.example.electro.entity.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
-    Role findFirstByName(String name);
+    Role findByName(String name);
     Role findFirstById(Long id);
 }

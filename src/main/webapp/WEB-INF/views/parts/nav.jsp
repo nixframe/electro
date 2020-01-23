@@ -48,7 +48,7 @@
                                 <label for="max" class="col-sm-2 col-form-label">To</label>
                                 <div class="col-sm-10">
                                     <input name="maxPrice" type="number" class="form-control" id="max"
-                                           value="${highPrice}">
+                                           value="1699">
                                 </div>
                             </div>
                         </div>

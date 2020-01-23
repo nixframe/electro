@@ -24,7 +24,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User test = userService.findByMail(s);
+        User test = userService.findByEmail(s);
         if (test == null) {
             throw new UsernameNotFoundException(s);
         }
@@ -33,6 +33,6 @@ public class SecurityUserDetailsService implements UserDetailsService {
             roles.add(new SimpleGrantedAuthority(role.getName()));
         }
         httpSession.setAttribute("name", test.getFullName());
-        return new CurrentUser(test.getMail(), test.getPassword(), roles, test);
+        return new CurrentUser(test.getEmail(), test.getPassword(), roles, test);
     }
 }

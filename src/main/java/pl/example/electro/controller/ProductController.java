@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.example.electro.entity.Manufacturer;
+import pl.example.electro.entity.Product;
 import pl.example.electro.service.ManufacturerService;
 import pl.example.electro.service.ProductService;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,7 +46,15 @@ public class ProductController {
     // TODO add search by category
     @RequestMapping("/search")
     public String getSearchResults(Model model, @RequestParam(required = false) String[] manufacturers, @RequestParam(required = false) String minPrice, @RequestParam(required = false) String maxPrice) {
-
+List<Product> response = new ArrayList<>();
+        List<Product> tmp = productService.findByManufacturers(manufacturers);
+        if (tmp != null) {
+            response.addAll(tmp);
+        }
+        List<Product> productsByPrice = productService.filterByPriceBetween(minPrice, maxPrice);
+        if (productsByPrice != null & productsByPrice.size()>0) {
+                response.retainAll(productsByPrice);
+        }
         return "products/search";
     }
 

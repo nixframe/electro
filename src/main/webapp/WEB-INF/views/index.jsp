@@ -23,7 +23,7 @@
                     <div class="col-md-5">
                         <div class="card h-50">
                             <a href="<c:url value="/product/${product.id}"/>" class="thumbnail">
-                                <img class="card-img-top thumbnail" src="${product.picture}" alt="No image">
+                                <img class="card-img-top thumbnail" src="${product.picture}" alt="${product.displayName}">
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">

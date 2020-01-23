@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pl.example.electro.entity.Product;
+import pl.example.electro.service.ProductService;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,4 +18,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findFirst3ByOrderByCreated();
 
     Product findFirstById(Long Id);
+
+    List<Product> findFirstByManufacturerId(Long id);
+
+    List<Product> findAllByManufacturerIds(List<Long> ids);
+
+    List<Product> findAllByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 }

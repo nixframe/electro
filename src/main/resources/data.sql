@@ -22,11 +22,11 @@ INSERT INTO product(id, created, description, manufacturer_id, name, picture, pr
 VALUES (4, '2020-01-01 01:01:01', 'Xbox One gaming console', 3, 'Xbox', '/images/xbox.jpg', 1699, 100, 4, 3);
 
 
-INSERT INTO user (id, activated, mail, name, password, surname, adres_id)
+INSERT INTO user (id, enabled, email, first_name, password, last_name, adres_id)
 VALUES (1, 1, 'user@user', 'Jan', 'asdasd', 'Kowalski', 1);
-INSERT INTO user (id, activated, mail, name, password, surname, adres_id)
+INSERT INTO user (id, enabled, email, first_name, password, last_name, adres_id)
 VALUES (2, 1, 'admin@admin', 'Jan', 'asdasd', 'Jabłoński', 2);
-INSERT INTO user (id, activated, mail, name, password, surname, adres_id)
+INSERT INTO user (id, enabled, email, first_name, password, last_name, adres_id)
 VALUES (3, 1, 'asd@asd', 'Jan', 'asdasd', 'Sztorc', null);
 
 

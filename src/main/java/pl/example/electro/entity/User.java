@@ -1,6 +1,10 @@
 package pl.example.electro.entity;
 
 import org.springframework.security.core.GrantedAuthority;
+import pl.example.electro.entity.Adres;
+import pl.example.electro.entity.Role;
+import pl.example.electro.validation.UserLoginValidationGroup;
+import pl.example.electro.validation.UserRegisterValidationGroup;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -16,21 +20,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Email
-    @NotBlank
+    @Email(groups = {UserLoginValidationGroup.class})
+    @NotBlank(groups = {UserLoginValidationGroup.class})
     @Column(nullable = false, unique = true)
-    private String mail;
+    private String email;
 
-    @NotBlank
+
+    @NotBlank(groups = {UserLoginValidationGroup.class, UserRegisterValidationGroup.class})
     private String password;
 
-    private boolean activated;
+    private boolean enabled;
 
     @NotBlank
-    private String name;
+    private String firstName;
 
     @NotBlank
-    private String surname;
+    private String lastName;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Adres adres;
@@ -41,7 +46,7 @@ public class User {
 
 
     public String getFullName() {
-        return name + " " + surname;
+        return firstName + " " + lastName;
     }
 
     public Long getId() {
@@ -52,12 +57,12 @@ public class User {
         this.id = id;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -68,28 +73,28 @@ public class User {
         this.password = password;
     }
 
-    public boolean isActivated() {
-        return activated;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setActivated(boolean activated) {
-        this.activated = activated;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Adres getAdres() {

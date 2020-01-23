@@ -6,9 +6,10 @@ public interface UserService {
 
      User getNewEmptyUser();
 
-     boolean isUserInDB(String mail);
+     User isUserInDB(String mail);
 
      User saveToDB(User user);
 
-     User findByMail(String mail);
+     User findByEmail(String mail);
+
 }

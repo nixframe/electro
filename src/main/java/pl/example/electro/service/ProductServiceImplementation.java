@@ -9,6 +9,7 @@ import pl.example.electro.repository.ProductRepository;
 import pl.example.electro.repository.ReviewRepository;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -57,5 +58,37 @@ public class ProductServiceImplementation implements ProductService {
     @Override
     public Product findById(Long id) {
         return productRepository.findFirstById(id);
+    }
+
+    @Override
+    public List<Product> findByManufacturers(String[] manufacturers) {
+        if (manufacturers != null) {
+            List<Long> ids = new ArrayList<>();
+
+            for (String s : manufacturers) {
+                try {
+                    ids.add(Long.parseLong(s));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (ids.size() > 0) {
+                return productRepository.findAllByManufacturerIds(ids);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Product> filterByPriceBetween(String minPrice, String maxPrice) {
+        if (minPrice != null & maxPrice != null) {
+            try{
+                return productRepository.findAllByPriceBetween(new BigDecimal(minPrice), new BigDecimal(maxPrice));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }

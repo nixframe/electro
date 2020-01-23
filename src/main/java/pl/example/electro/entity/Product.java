@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "product")
 public class Product {
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     public List<Review> reviews = new ArrayList<>();
 
     @Id

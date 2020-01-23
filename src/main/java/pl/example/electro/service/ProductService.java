@@ -22,4 +22,8 @@ public interface ProductService {
     List<Product> getSampleProducts();
 
     Product findById(Long id);
+
+    List<Product> findByManufacturers(String[] manufacturers);
+
+    List<Product> filterByPriceBetween(String minPrice, String maxPrice);
 }

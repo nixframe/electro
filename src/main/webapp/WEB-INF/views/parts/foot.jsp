@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer class="mastfoot mt-auto">
     <div class="inner">
-        <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p>Electro demo project</p>
     </div>
 </footer>
 
