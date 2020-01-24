@@ -3,7 +3,9 @@ package pl.example.electro.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -34,6 +36,13 @@ public class Order {
 
     @Column(name = "payment_type")
     private Enum<Payment> paymentType;
+
+    public Date getOrderCreationTimeFormatted(){
+        if (this.orderCreation != null) {
+            return Date.from(orderCreation.atZone(ZoneId.systemDefault()).toInstant());
+        }
+        return null;
+    }
 
     public Long getId() {
         return id;

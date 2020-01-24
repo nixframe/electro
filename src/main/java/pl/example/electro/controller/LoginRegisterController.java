@@ -57,7 +57,7 @@ public class LoginRegisterController {
         }
 
         userService.saveToDB(user);
-        return "redirect:login";
+        return "redirect:/login";
     }
 
     // LOGOUT AND ACCESS ERROR

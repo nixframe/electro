@@ -23,11 +23,11 @@ VALUES (4, '2020-01-01 01:01:01', 'Xbox One gaming console', 3, 'Xbox', '/images
 
 
 INSERT INTO user (id, enabled, email, first_name, password, last_name, adres_id)
-VALUES (1, 1, 'user@user', 'Jan', 'asdasd', 'Kowalski', 1);
+VALUES (1, 1, 'user@user', 'Jan', '$2a$10$E63pA4guE51Z5QkAcPrCgeTO1Sk9NEPlAb2EUZ2QJ3NXYBC2kbBCG', 'Kowalski', 1);
 INSERT INTO user (id, enabled, email, first_name, password, last_name, adres_id)
-VALUES (2, 1, 'admin@admin', 'Jan', 'asdasd', 'Jabłoński', 2);
+VALUES (2, 1, 'admin@admin', 'Jan', '$2a$10$E63pA4guE51Z5QkAcPrCgeTO1Sk9NEPlAb2EUZ2QJ3NXYBC2kbBCG', 'Jabłoński', 2);
 INSERT INTO user (id, enabled, email, first_name, password, last_name, adres_id)
-VALUES (3, 1, 'asd@asd', 'Jan', 'asdasd', 'Sztorc', null);
+VALUES (3, 1, 'asd@asd', 'Jan', '$2a$10$E63pA4guE51Z5QkAcPrCgeTO1Sk9NEPlAb2EUZ2QJ3NXYBC2kbBCG', 'Sztorc', null);
 
 
 INSERT INTO role(role_id, role)

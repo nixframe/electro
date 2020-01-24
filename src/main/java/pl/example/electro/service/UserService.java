@@ -12,4 +12,8 @@ public interface UserService {
 
      User findByEmail(String mail);
 
+     User changeUserPassword(Long id, String oldPassword, String newPassword1, String newPassword2);
+
+     User editUser(User user);
+
 }

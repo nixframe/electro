@@ -15,4 +15,6 @@ public interface CartService {
     void subtractFromCartById(Long id);
 
     void removeFromCartById(Long id);
+
+    void clearCart();
 }

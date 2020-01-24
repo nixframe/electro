@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+//@SessionScope
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Cart {
 

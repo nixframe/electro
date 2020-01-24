@@ -16,14 +16,14 @@ import java.util.HashSet;
 public class UserServiceImplementation implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final AdresRepository addressRepository;
+    private final AdresRepository adresRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImplementation(UserRepository userRepository, RoleRepository roleRepository, AdresRepository addressRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserServiceImplementation(UserRepository userRepository, RoleRepository roleRepository, AdresRepository adresRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.addressRepository = addressRepository;
+        this.adresRepository = adresRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -56,5 +56,26 @@ public class UserServiceImplementation implements UserService {
     public User findByEmail(String mail) {
         return userRepository.findByEmail(mail);
     }
+
+    @Override
+    public User changeUserPassword(Long id, String oldPassword, String newPassword1, String newPassword2) throws IllegalArgumentException {
+        User user = userRepository.findFirstById(id);
+        if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+//            throw new BadCredentialsException();
+//            throw new SecurityException();
+            throw new IllegalArgumentException();
+        }
+        if (newPassword1.equals(newPassword2)) {
+            throw new IllegalArgumentException();
+        }
+        user.setPassword(passwordEncoder.encode(newPassword1));
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User editUser(User user) {
+        return userRepository.save(user);
+    }
+
 
 }

@@ -54,7 +54,7 @@ public class CartController {
         return productService.getHigh();
     }
 
-    @RequestMapping("/")
+    @RequestMapping("")
     public String showCart() {
         return "cart";
     }

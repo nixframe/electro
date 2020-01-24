@@ -28,7 +28,7 @@
 
             <div class="row">
                 <c:forEach items="${sampleProducts}" var="product">
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-4 col-md-4 mb-4">
                         <div class="card h-100">
                             <a href="<c:url value="/prod/${product.id}"/>">
                                 <img class="card-img-top"

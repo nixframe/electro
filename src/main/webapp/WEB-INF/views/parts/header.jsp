@@ -15,18 +15,25 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="<c:url value="/"/>">Homepage
+                        <a class="nav-link" href="<c:url value="/"/>">
+                            <button type="button" class="btn btn-sm btn-outline-light">Home page</button>
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/login"/>">Log in</a>
+                        <a class="nav-link" href="<c:url value="/login"/>">
+                            <button type="button" class="btn btn-sm btn-outline-light">Log in</button>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/register"/>">Register</a>
+                        <a class="nav-link" href="<c:url value="/register"/>">
+                            <button type="button" class="btn btn-sm btn-outline-light">Register</button>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/cart/"/>">Cart</a>
+                        <a class="nav-link" href="<c:url value="/cart/"/>">
+                            <button type="button" class="btn btn-sm btn-outline-light">Cart</button>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -35,31 +42,42 @@
         <sec:authorize access="isAuthenticated()">
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li>
+                    <li class="nav-item">
                         <a class="nav-link">Welcome
                             <c:if test="${sessionScope.name != null}">
                                 ${sessionScope.name}
                             </c:if>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<c:url value="/"/>">Homepage
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/"/>">
+                            <button type="button" class="btn btn-sm btn-outline-light">Home page</button>
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/login"/>">User panel</a>
+                        <a class="nav-link" href="<c:url value="/user/"/>">
+                            <button type="button" class="btn btn-sm btn-outline-light">User panel</button>
+                        </a>
                     </li>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <li class="nav-item">
-                            <a class="nav-link" href="<c:url value="/admin"/>">Admin panel</a>
+                            <a class="nav-link" href="<c:url value="/admin"/>">
+                                <button type="button" class="btn btn-sm btn-outline-light">Admin panel</button>
+                            </a>
                         </li>
                     </sec:authorize>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/cart/"/>">Cart</a>
+                        <a class="nav-link" href="<c:url value="/cart/"/>">
+                            <button type="button" class="btn btn-sm btn-outline-light">Cart</button>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/logout"/>">Log out</a>
+                        <form:form id="logoutForm" action="/logout" method="post">
+                            <a class="nav-link">
+                                <button type="button" class="btn btn-sm btn-outline-light">Log out</button>
+                            </a>
+                        </form:form>
                     </li>
                 </ul>
             </div>

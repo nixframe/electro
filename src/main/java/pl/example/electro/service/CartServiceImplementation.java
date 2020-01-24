@@ -57,6 +57,7 @@ public class CartServiceImplementation implements CartService {
                 if (c.getProductQuantity() > 1) {
                     c.setProductQuantity(c.getProductQuantity() - 1);
                 }
+                // TODO Removing from cart when quantity == 1
                 return;
             }
         }
@@ -65,5 +66,10 @@ public class CartServiceImplementation implements CartService {
     @Override
     public void removeFromCartById(Long id) {
         cart.getCartItemsList().removeIf(c -> c.getProduct().getId().equals(id));
+    }
+
+    @Override
+    public void clearCart() {
+        cart.getCartItemsList().clear();
     }
 }

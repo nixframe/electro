@@ -22,7 +22,7 @@
 
         <div class="col-lg-9">
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="<c:url value="/prod/${product.id}"/>">
                             <img class="card-img-top"
@@ -93,7 +93,7 @@
                         </small>
                         <br/>
                     </c:forEach>
-                    <a href="<c:url value="/prod/review/add?productId=${product.id}"/>" class="btn btn-success">Add</a>
+                    <a href="<c:url value="/prod/review/add?productId=${product.id}"/>" class="btn btn-sm btn-success">Add</a>
                 </div>
             </div>
         </div>
