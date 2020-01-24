@@ -44,18 +44,21 @@ public class ProductController {
 
     // TODO change reqParam to List<Manufacturers> via Converter
     // TODO add search by category
+
     @RequestMapping("/search")
     public String getSearchResults(Model model, @RequestParam(required = false) String[] manufacturers, @RequestParam(required = false) String minPrice, @RequestParam(required = false) String maxPrice) {
-List<Product> response = new ArrayList<>();
+        List<Product> response = new ArrayList<>();
         List<Product> tmp = productService.findByManufacturers(manufacturers);
         if (tmp != null) {
             response.addAll(tmp);
         }
-        List<Product> productsByPrice = productService.filterByPriceBetween(minPrice, maxPrice);
-        if (productsByPrice != null & productsByPrice.size()>0) {
-                response.retainAll(productsByPrice);
+        tmp = productService.filterByPriceBetween(minPrice, maxPrice);
+        if (tmp != null & tmp.size() > 0) {
+            response.retainAll(tmp);
         }
-        return "products/search";
+
+        model.addAttribute("products", response);
+        return "products/allProducts";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

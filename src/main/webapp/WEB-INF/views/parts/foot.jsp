@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<footer class="mastfoot mt-auto">
-    <div class="inner">
-        <p>Electro demo project</p>
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; nix 2020</p>
     </div>
+
 </footer>
 
 

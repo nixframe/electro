@@ -6,33 +6,49 @@
     <c:import url="/WEB-INF/views/parts/head.jsp"/>
 </head>
 <body>
-<div class="wrapper fadeInDown">
-    <div id="formContent">
 
-        <div class="fadeIn first">
-            <img src="/images/login.jpg" id="icon" alt="User Icon"/>
+<!-- Header -->
+<c:import url="/WEB-INF/views/parts/header.jsp"/>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="login-form card-login row">
+        <div class="card-body row justify-content-md-center">
+            <form:form action="/login" method="post">
+                <h2 class="text-center">Log in</h2>
+                <p class="hint-text">
+                    For your convenience here are some provided users: <br/>
+                    user@user - asdasd<br/>
+                    admin@admin - asdasd
+                </p>
+                <c:if test="${not empty error}">
+                    <div class="form-group" style="color: red;">${error}</div>
+                </c:if>
+
+                <div class="form-group">
+                    <input name="username" type="text" class="form-control" placeholder="Email" required="required">
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control" placeholder="Password" required="required">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                </div>
+                <div class="clearfix">
+                    <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                    <br/>
+                    <a href="" class="pull-right">Forgot Password?</a>
+                </div>
+
+                <p class="text-center"><a href="<c:url value="/register"/>">Create an Account</a></p>
+            </form:form>
+
         </div>
-
-        <c:if test="${not empty error}">
-            <div class="form-group" style="color: red;">${error}</div>
-        </c:if>
-
-        <form:form action="/login" method="post">
-            <input type="email" id="login" class="fadeIn second" name="username" placeholder="login" required="required">
-            <label for="login">Email</label>
-            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password"
-                   required="required">
-            <label for="password">Password</label>
-            <input type="submit" class="fadeIn fourth" value="Log In">
-        </form:form>
-
-        <div id="formFooter">
-            <a class="underlineHover" href="<c:url value="/register"/>">Register</a>
-        </div>
-
     </div>
 </div>
 
+
+<!-- Footer -->
 <c:import url="/WEB-INF/views/parts/foot.jsp"/>
 
 </body>

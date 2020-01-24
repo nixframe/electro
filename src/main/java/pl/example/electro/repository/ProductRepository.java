@@ -21,7 +21,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findFirstByManufacturerId(Long id);
 
-    List<Product> findAllByManufacturerIds(List<Long> ids);
+    List<Product> findAllByManufacturerId(List<Long> ids);
 
     List<Product> findAllByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 }

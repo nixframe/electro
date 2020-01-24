@@ -2,28 +2,35 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <c:import url="/WEB-INF/views/parts/head.jsp"/>
 </head>
 
-<body class="text-center">
-<div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body>
 
-    <c:import url="/WEB-INF/views/parts/header.jsp"/>
+<!-- Header -->
+<c:import url="/WEB-INF/views/parts/header.jsp"/>
 
-    <main role="main" class="inner cover">
-        <div class="row">
-            <c:import url="/WEB-INF/views/parts/nav.jsp"/>
-            <%--MAIN DIV--%>
-            <div class="col-lg-5">
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <!-- Navigation Bar -->
+        <c:import url="/WEB-INF/views/parts/nav.jsp"/>
+
+        <div class="col-lg-9">
+            <div class="row">
                 <c:forEach items="${products}" var="product">
-
-                    <div class="col-md-5">
-                        <div class="card h-50">
-                            <a href="<c:url value="/prod/${product.id}"/>" class="thumbnail">
-                                <img class="card-img-top thumbnail" src="${product.picture}" alt="No image">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="<c:url value="/prod/${product.id}"/>">
+                                <img class="card-img-top"
+                                     src="${product.picture}"
+                                     alt="${product.displayName}">
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">
@@ -32,8 +39,15 @@
                                     </a>
                                 </h4>
                                 <div class="row">
-                                    <div class="col-6"><h5><c:out value="${product.price}"/></h5></div>
-                                    <div class="col-6">
+                                    <div class="col">
+                                        <h5>
+                                            <c:out value="${product.price}"/>
+                                        </h5>
+                                        <p class="card-text">
+                                            In stock <c:out value="${product.quantity}"/>
+                                        </p>
+                                    </div>
+                                    <div class="col">
                                         <a href="<c:url value="/cart/add?id=${product.id}"/>"
                                            class="btn btn-primary btn-sm" role="button">
                                             Add to cart
@@ -44,24 +58,39 @@
                             <div class="card-footer">
                                 <small class="text-muted">
                                     <c:choose>
-                                        <c:when test="${product.rating < 1}">&#9734; &#9734; &#9734; &#9734; &#9734;</c:when>
-                                        <c:when test="${product.rating < 2}">&#9733; &#9734; &#9734; &#9734; &#9734;</c:when>
-                                        <c:when test="${product.rating < 3}">&#9733; &#9733; &#9734; &#9734; &#9734;</c:when>
-                                        <c:when test="${product.rating < 4}">&#9733; &#9733; &#9733; &#9734; &#9734;</c:when>
-                                        <c:when test="${product.rating < 5}">&#9733; &#9733; &#9733; &#9733; &#9734;</c:when>
-                                        <c:otherwise>&#9733; &#9733; &#9733; &#9733; &#9733;</c:otherwise>
-                                    </c:choose></small>
+                                        <c:when test="${product.rating < 1}">
+                                            &#9734; &#9734; &#9734; &#9734; &#9734;
+                                        </c:when>
+                                        <c:when test="${product.rating < 2}">
+                                            &#9733; &#9734; &#9734; &#9734; &#9734;
+                                        </c:when>
+                                        <c:when test="${product.rating < 3}">
+                                            &#9733; &#9733; &#9734; &#9734; &#9734;
+                                        </c:when>
+                                        <c:when test="${product.rating < 4}">
+                                            &#9733; &#9733; &#9733; &#9734; &#9734;
+                                        </c:when>
+                                        <c:when test="${product.rating < 5}">
+                                            &#9733; &#9733; &#9733; &#9733; &#9734;
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            &#9733; &#9733; &#9733; &#9733; &#9733;
+                                        </c:otherwise>
+                                    </c:choose>
+                                </small>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
         </div>
-    </main>
-
-    <c:import url="/WEB-INF/views/parts/foot.jsp"/>
-
+    </div>
 </div>
+
+<!-- Footer -->
+<c:import url="/WEB-INF/views/parts/foot.jsp"/>
+
 </body>
 </html>
 

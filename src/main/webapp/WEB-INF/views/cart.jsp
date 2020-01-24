@@ -7,20 +7,26 @@
     <c:import url="/WEB-INF/views/parts/head.jsp"/>
 </head>
 
-<body class="text-center">
-<div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body>
 
-    <c:import url="/WEB-INF/views/parts/header.jsp"/>
+<!-- Header -->
+<c:import url="/WEB-INF/views/parts/header.jsp"/>
 
-    <main role="main" class="inner cover">
-        <div class="row">
-            <c:import url="/WEB-INF/views/parts/nav.jsp"/>
-            <%--MAIN DIV--%>
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <!-- Navigation Bar -->
+        <c:import url="/WEB-INF/views/parts/nav.jsp"/>
+
+
+        <div class="col-lg-9">
+
             <div class="col-lg-5">
 
                 <h1 class="my-4">Cart inventory</h1>
 
-                <table class="table">
+                <table class="table thead-light table-striped">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -77,11 +83,12 @@
                 </c:if>
             </div>
         </div>
-    </main>
-
-    <c:import url="/WEB-INF/views/parts/foot.jsp"/>
-
+    </div>
 </div>
+
+<!-- Footer -->
+<c:import url="/WEB-INF/views/parts/foot.jsp"/>
+
 </body>
 </html>
 

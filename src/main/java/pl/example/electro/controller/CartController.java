@@ -8,23 +8,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.example.electro.entity.Cart;
 import pl.example.electro.entity.CartItem;
+import pl.example.electro.entity.Manufacturer;
 import pl.example.electro.service.CartService;
+import pl.example.electro.service.ManufacturerService;
+import pl.example.electro.service.ProductService;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
 @RequestMapping("/cart")
 public class CartController {
     private CartService cartService;
+    private ProductService productService;
+    private ManufacturerService manufacturerService;
+
+    @Autowired
+    public CartController(CartService cartService, ProductService productService, ManufacturerService manufacturerService) {
+        this.cartService = cartService;
+        this.productService = productService;
+        this.manufacturerService = manufacturerService;
+    }
 
     @Resource
     private Cart cart;
-
-    @Autowired
-    public CartController(CartService cartService) {
-        this.cartService = cartService;
-    }
 
     @ModelAttribute("totalPrice")
     public String getSum() {
@@ -36,7 +44,17 @@ public class CartController {
         return cart.getCartItemsList();
     }
 
-    @RequestMapping("")
+    @ModelAttribute("manufacturers")
+    public List<Manufacturer> manufacturers() {
+        return manufacturerService.findAll();
+    }
+
+    @ModelAttribute("highPrice")
+    public BigDecimal getHighestPrice() {
+        return productService.getHigh();
+    }
+
+    @RequestMapping("/")
     public String showCart() {
         return "cart";
     }

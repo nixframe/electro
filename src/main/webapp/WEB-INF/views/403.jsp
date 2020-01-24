@@ -8,29 +8,31 @@
     <c:import url="/WEB-INF/views/parts/head.jsp"/>
 </head>
 
-<body class="text-center">
-<div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body>
 
-    <c:import url="/WEB-INF/views/parts/header.jsp"/>
+<!-- Header -->
+<c:import url="/WEB-INF/views/parts/header.jsp"/>
 
-    <main role="main" class="inner cover">
-        <div class="row">
-            <c:import url="/WEB-INF/views/parts/nav.jsp"/>
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <!-- Navigation Bar -->
+        <c:import url="/WEB-INF/views/parts/nav.jsp"/>
+
             <%--MAIN DIV--%>
             <div class="col-lg-5">
                 <a href="<c:url value="/"/>">
                     <div class="card mt-4">
-                        <h3>Access denied</h3>
+                        <h3> Error 403 - Access denied</h3>
                     </div>
                 </a>
             </div>
-        </div>
+    </div>
 </div>
-</main>
 
 <c:import url="/WEB-INF/views/parts/foot.jsp"/>
 
-</div>
 </body>
 </html>
 

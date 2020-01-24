@@ -31,7 +31,7 @@ public class HomeController {
 
     @RequestMapping("")
     public String homePage(Model model, HttpSession session) {
-        model.addAttribute("highPrice", productService.getHigh());
+        session.setAttribute("highPrice", productService.getHigh());
         List<Manufacturer> manufacturers = manufacturerService.findAll();
         session.setAttribute("manufacturers", manufacturers);
         return "index";
