@@ -12,11 +12,12 @@ import java.util.List;
 @Table(name = "orders")
 public class Order {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="orders_order_items", joinColumns = @JoinColumn(name="order_id"), inverseJoinColumns = @JoinColumn(name = "order_item_id"))
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "orders_order_items", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "order_item_id"))
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     @ManyToOne
@@ -31,13 +32,13 @@ public class Order {
     @Column(name = "order_completion")
     private LocalDateTime orderCompletion;
 
-    @Column(name = "payment_recieved")
-    private boolean paymentRecieved;
+    @Column(name = "payment_received")
+    private boolean paymentReceived;
 
     @Column(name = "payment_type")
     private Enum<Payment> paymentType;
 
-    public Date getOrderCreationTimeFormatted(){
+    public Date getOrderCreationTimeFormatted() {
         if (this.orderCreation != null) {
             return Date.from(orderCreation.atZone(ZoneId.systemDefault()).toInstant());
         }
@@ -92,12 +93,12 @@ public class Order {
         this.orderCompletion = orderCompletion;
     }
 
-    public boolean isPaymentRecieved() {
-        return paymentRecieved;
+    public boolean isPaymentReceived() {
+        return paymentReceived;
     }
 
-    public void setPaymentRecieved(boolean paymentRecieved) {
-        this.paymentRecieved = paymentRecieved;
+    public void setPaymentReceived(boolean paymentReceived) {
+        this.paymentReceived = paymentReceived;
     }
 
     public Enum<Payment> getPaymentType() {

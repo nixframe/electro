@@ -112,13 +112,13 @@
                                         <td>---</td>
                                     </c:if>
                                     <!-- Payment status -->
-                                    <c:if test="${order.paymentRecieved}">
+                                    <c:if test="${order.paymentReceived}">
                                         <td>Paid - ${order.paymentType.name()}</td>
                                     </c:if>
-                                    <c:if test="${!order.paymentRecieved}">
+                                    <c:if test="${!order.paymentReceived}">
                                         <td>
-                                            <a href="<c:url value="/order/pay?id=${order.id}"/>">
-                                                <button class="btn btn-primary">Pay</button>
+                                            <a href="<c:url value="/order/pay?orderId=${order.id}"/>">
+                                                <button class="btn btn-sm btn-primary">Pay</button>
                                             </a>
                                         </td>
                                     </c:if>
@@ -126,8 +126,8 @@
                                     <td>${order.orderCompletion}</td>
                                     <!-- Details -->
                                     <td>
-                                        <a href="<c:url value="/order/datails?id=${order.id}"/>">
-                                            <button class="btn btn-primary">+</button>
+                                        <a href="<c:url value="/order/details?orderId=${order.id}"/>">
+                                            <button class="btn btn-sm btn-primary">+</button>
                                         </a>
                                     </td>
                                 </tr>

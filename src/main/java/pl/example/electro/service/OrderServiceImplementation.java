@@ -38,7 +38,8 @@ public class OrderServiceImplementation implements OrderService{
         }
         order.setUser(user);
         order.setTotalAmount(cartService.getTotal());
-        order.setPaymentRecieved(false);
+        order.setPaymentReceived(false);
+        order.setOrderCreation(LocalDateTime.now());
         orderRepository.save(order);
         cartService.clearCart();
         return order;
@@ -50,10 +51,8 @@ public class OrderServiceImplementation implements OrderService{
     }
 
     @Override
-    public Order payOrder(Long id, Payment payment) {
-        Order order = orderRepository.getFirstById(id);
-        order.setPaymentType(payment);
-        order.setPaymentRecieved(true);
+    public Order payOrder(Order order) {
+        order.setPaymentReceived(true);
         return orderRepository.save(order);
     }
 

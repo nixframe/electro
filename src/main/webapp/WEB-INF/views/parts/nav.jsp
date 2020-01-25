@@ -63,27 +63,7 @@
                             </ul>
                         </div>
                     </div>
-
-                    <%--                    // TODO category search--%>
-                    <%--                    <div>--%>
-                    <%--                        <div class="py-2">--%>
-                    <%--                            <h6>Category:</h6>--%>
-                    <%--                            <div class="form-group row">--%>
-                    <%--                                <label for="min" class="col-sm-2 col-form-label">From</label>--%>
-                    <%--                                <div class="col-sm-10">--%>
-                    <%--                                    <input name="minPrice" type="number" class="form-control" id="min" value="0">--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                            <div class="form-group row">--%>
-                    <%--                                <label for="max" class="col-sm-2 col-form-label">To</label>--%>
-                    <%--                                <div class="col-sm-10">--%>
-                    <%--                                    <input name="maxPrice" type="number" class="form-control" id="max" value="${highPrice}">--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
-
+                    
                     <input class="btn btn-sm btn-primary" type="submit" value="Search">
                 </form:form>
                 <hr class="sidebar-divider">

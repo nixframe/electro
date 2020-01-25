@@ -58,14 +58,14 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public User changeUserPassword(Long id, String oldPassword, String newPassword1, String newPassword2) throws IllegalArgumentException {
-        User user = userRepository.findFirstById(id);
-        if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+    public User changeUserPassword(Long userId, String oldPassword, String newPassword1, String newPassword2) throws IllegalArgumentException {
+        User user = userRepository.findFirstById(userId);
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
 //            throw new BadCredentialsException();
 //            throw new SecurityException();
             throw new IllegalArgumentException();
         }
-        if (newPassword1.equals(newPassword2)) {
+        if (!newPassword1.equals(newPassword2)) {
             throw new IllegalArgumentException();
         }
         user.setPassword(passwordEncoder.encode(newPassword1));

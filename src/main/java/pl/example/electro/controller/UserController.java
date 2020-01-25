@@ -76,12 +76,13 @@ public class UserController {
     @PostMapping("/edit/password")
     public String postEditUserPasswordForm(@AuthenticationPrincipal CurrentUser currentUser,
                                            Model model,
-                                           @RequestParam(name = "presentPassword") @Validated({UserEditValidationGroup.class}) String oldPassword,
+                                           @RequestParam(name = "presentPassword") String oldPassword,
                                            @RequestParam(name = "newPassword0") String newPassword,
                                            @RequestParam(name = "newPassword1") String control) {
 
+        Long userId = userService.findByEmail(currentUser.getUsername()).getId();
         try {
-            userService.changeUserPassword(currentUser.getUser().getId(), oldPassword, newPassword, control);
+            userService.changeUserPassword(userId, oldPassword, newPassword, control);
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", "Passwords do not match");
             return "/user/editUserPassword";
@@ -93,8 +94,8 @@ public class UserController {
 
     @RequestMapping(value = "/edit/adres", method = RequestMethod.GET)
     public String getEditUserAdresForm(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
-        Adres adres = getUser(currentUser).getAdres();
-        model.addAttribute("address", adres == null ? new Adres() : adres);
+        User user = userService.findByEmail(currentUser.getUsername());
+        model.addAttribute("address", user.getAdres() == null ? new Adres() : user.getAdres());
         return "user/editUserAdres";
     }
 

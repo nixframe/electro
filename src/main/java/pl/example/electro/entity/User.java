@@ -25,7 +25,6 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-
     @NotBlank(groups = {UserLoginValidationGroup.class, UserRegisterValidationGroup.class})
     private String password;
 
@@ -43,7 +42,6 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-
 
     public String getFullName() {
         return firstName + " " + lastName;
