@@ -14,7 +14,7 @@ public interface OrderService {
 
     List<Order> getAllUserOrders(User user);
 
-    Order payOrder(Long id, Payment payment);
+    Order payOrder(Order order);
 
     Order completeOrder(Long id);
 
