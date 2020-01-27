@@ -26,7 +26,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <table class="table">
+                        <table class="table table-sm">
                             <thead>Your details</thead>
                             <tbody>
                             <tr>
@@ -67,12 +67,12 @@
                                 <td>${user.adres.aptNumber}</td>
                             </tr>
                             <tr>
-                                <td>City</td>
-                                <td>${user.adres.city}</td>
-                            </tr>
-                            <tr>
                                 <td>Postal code</td>
                                 <td>${user.adres.postalCode}</td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td>${user.adres.city}</td>
                             </tr>
                             </tbody>
                         </table>

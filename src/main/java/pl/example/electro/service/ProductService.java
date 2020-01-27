@@ -26,4 +26,8 @@ public interface ProductService {
     List<Product> findByManufacturers(String[] manufacturers);
 
     List<Product> filterByPriceBetween(String minPrice, String maxPrice);
+
+    void editProduct(Product product);
+
+    Product initializeProduct(Product product);
 }

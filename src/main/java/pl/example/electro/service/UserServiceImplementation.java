@@ -11,6 +11,7 @@ import pl.example.electro.repository.UserRepository;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImplementation implements UserService {
@@ -77,5 +78,28 @@ public class UserServiceImplementation implements UserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
+    @Override
+    public User findById(Long id) {
+        return userRepository.findFirstById(id);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.delete(userRepository.findFirstById(id));
+    }
+
+    @Override
+    public List<Role> getAllRoles() {
+        return roleRepository.findAll();
+    }
+
+    @Override
+    public Role getRole(Long id) {
+        return roleRepository.findFirstById(id);
+    }
 }

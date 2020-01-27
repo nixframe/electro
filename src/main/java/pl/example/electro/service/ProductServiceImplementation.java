@@ -9,6 +9,7 @@ import pl.example.electro.repository.ProductRepository;
 import pl.example.electro.repository.ReviewRepository;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,5 +91,18 @@ public class ProductServiceImplementation implements ProductService {
             }
         }
         return null;
+    }
+
+    @Override
+    public void editProduct(Product product) {
+        productRepository.save(product);
+    }
+
+    @Override
+    public Product initializeProduct(Product product) {
+        product.setCreated(LocalDateTime.now());
+        product.setPicture("/image/def.png");
+        productRepository.save(product);
+        return product;
     }
 }

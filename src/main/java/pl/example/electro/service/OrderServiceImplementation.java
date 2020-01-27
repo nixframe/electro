@@ -71,4 +71,19 @@ public class OrderServiceImplementation implements OrderService{
         }
         orderRepository.delete(order);
     }
+
+    @Override
+    public List<Order> getPending() {
+        return orderRepository.findAllByOrderCompletionIsNullAndPaymentReceivedIsTrue();
+    }
+
+    @Override
+    public List<Order> getNotPaid() {
+        return orderRepository.findAllByOrderCompletionIsNullAndPaymentReceivedIsFalse();
+    }
+
+    @Override
+    public List<Order> getCompleted() {
+        return orderRepository.findAllByOrderCompletionIsNotNull();
+    }
 }

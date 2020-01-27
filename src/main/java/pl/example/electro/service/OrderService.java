@@ -20,4 +20,10 @@ public interface OrderService {
 
     void cancelOrder(Long id);
 
+    List<Order> getPending();
+
+    List<Order> getNotPaid();
+
+    List<Order> getCompleted();
+
 }

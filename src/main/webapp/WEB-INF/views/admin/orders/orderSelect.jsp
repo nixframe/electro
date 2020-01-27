@@ -22,17 +22,17 @@
 
         <div class="col-lg-9">
             <div class="col">
-                <h1 class="my-3">Admin panel</h1>
+                <h1 class="my-3">Select order type</h1>
 
                 <div class="list">
-                    <a href="<c:url value="/admin/product"/>" class="list-group-item">
-                        Products
+                    <a href="<c:url value="/admin/orders/pending"/>" class="list-group-item">
+                       Pending
                     </a>
-                    <a href="<c:url value="/admin/orders"/>" class="list-group-item">
-                        Orders
+                    <a href="<c:url value="/admin/orders/notpaid"/>" class="list-group-item">
+                        Not Paid
                     </a>
-                    <a href="<c:url value="/admin/user"/>" class="list-group-item">
-                        Users
+                    <a href="<c:url value="/admin/orders/completed"/>" class="list-group-item">
+                       Completed
                     </a>
                 </div>
 

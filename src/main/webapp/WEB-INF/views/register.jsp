@@ -13,7 +13,7 @@
     <form:form action="/register" method="post" modelAttribute="user">
         <h2>Register</h2>
         <p class="hint-text">
-            For your convenience here are some provided users: <br/>
+            For your convenience there are some provided users: <br/>
             user@user - asdasd<br/>
             admin@admin - asdasd<br/>
             <a href="<c:url value="/login"/>">Use them!</a>

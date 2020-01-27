@@ -36,11 +36,11 @@
                     Flat: <form:input path="aptNumber"/>
                     <form:errors path="aptNumber"/>
                     <br/>
-                    city: <form:input path="city"/>
-                    <form:errors path="city"/>
-                    <br/>
                     Postal code: <form:input path="postalCode"/>
                     <form:errors path="postalCode"/>
+                    <br/>
+                    city: <form:input path="city"/>
+                    <form:errors path="city"/>
                     <br/>
                     <input class="btn btn-sm btn-primary" type="submit" value="Save changes">
                 </form:form>

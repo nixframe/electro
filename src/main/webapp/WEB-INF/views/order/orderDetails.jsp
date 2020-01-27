@@ -26,7 +26,7 @@
                 <h1 class="my-3">
                     Order summary
                 </h1>
-                <table class="table thead-light table-striped">
+                <table class="table table-sm thead-light table-striped">
                     <thead>
                     <tr>
                         <th scope="col">#</th>

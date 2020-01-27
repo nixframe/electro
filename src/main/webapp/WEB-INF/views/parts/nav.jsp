@@ -20,7 +20,7 @@
 
             <li class="nav-item">
                 <div class="sidebar-heading">
-                    <span><h6>Filter products</h6></span>
+                    <span>Filter products</span>
                 </div>
             </li>
 
