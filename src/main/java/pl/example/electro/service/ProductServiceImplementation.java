@@ -75,7 +75,7 @@ public class ProductServiceImplementation implements ProductService {
             }
 
             if (ids.size() > 0) {
-                return productRepository.findAllByManufacturerId(ids);
+                return productRepository.findAllByManufacturerIdIn(ids);
             }
         }
         return null;
