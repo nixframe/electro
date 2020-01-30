@@ -1,6 +1,7 @@
 package pl.example.electro.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "order_item")
@@ -12,6 +13,7 @@ public class OrderItem {
 
     @OneToOne
     private Product product;
+
     private Integer productQuantity;
 
     public OrderItem() {

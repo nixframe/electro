@@ -1,8 +1,8 @@
 package pl.example.electro.entity;
 
 public enum Payment {
-    CASH_ON_DELIVERY("Za pobraniem"),
-    WIRE_TRANSFER("Przelew");
+    CASH_ON_DELIVERY("Cash on delivery"),
+    WIRE_TRANSFER("Wire transfer");
 
     private String value;
 

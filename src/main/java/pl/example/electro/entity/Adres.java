@@ -1,5 +1,7 @@
 package pl.example.electro.entity;
 
+import pl.example.electro.validation.AdressValidationGroup;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -18,24 +20,24 @@ public class Adres {
     @OneToOne(mappedBy = "adres")
     private User user;
 
-    @NotBlank(message = BLANK_MESSAGE)
+    @NotBlank(message = BLANK_MESSAGE, groups = {AdressValidationGroup.class})
     private String street;
 
     @Column(name = "house_number")
-    @NotBlank(message = BLANK_MESSAGE)
-    @Pattern(regexp = "^\\d+[a-zA-Z]?$", message = INVALID_PATTERN)
+    @NotBlank(message = BLANK_MESSAGE, groups = {AdressValidationGroup.class})
+    @Pattern(regexp = "^\\d+[a-zA-Z]?$", message = INVALID_PATTERN, groups = {AdressValidationGroup.class})
     private String houseNumber;
 
     @Column(name = "apartment_number")
-    @Pattern(regexp = "^\\d*$", message =INVALID_PATTERN)
+    @Pattern(regexp = "^\\d*$", message =INVALID_PATTERN, groups = {AdressValidationGroup.class})
     private String aptNumber;
 
-    @NotBlank(message = BLANK_MESSAGE)
+    @NotBlank(message = BLANK_MESSAGE, groups = {AdressValidationGroup.class})
     private String city;
 
     @Column(name = "post_code")
-    @NotBlank(message = BLANK_MESSAGE)
-    @Pattern(regexp = "^\\d{2}-\\d{3}$", message = INVALID_PATTERN)
+    @NotBlank(message = BLANK_MESSAGE, groups = {AdressValidationGroup.class})
+    @Pattern(regexp = "^\\d{2}-\\d{3}$", message = INVALID_PATTERN, groups = {AdressValidationGroup.class})
     private String postalCode;
 
     public Long getId() {

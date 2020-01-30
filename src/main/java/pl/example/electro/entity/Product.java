@@ -2,6 +2,7 @@ package pl.example.electro.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -13,28 +14,39 @@ import java.util.List;
 @Table(name = "product")
 public class Product {
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    public List<Review> reviews = new ArrayList<>();
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String name;
+
     @NotNull
     @ManyToOne
     private Manufacturer manufacturer;
+
     @NotBlank
     @Column(columnDefinition = "text")
     private String description;
+
     @NotNull
     private BigDecimal price;
+
+    @Min(0)
     private Integer quantity;
+
     @Max(7)
+    @Min(0)
     private Double rating;
+
     private Integer ratingsNumber;
+
     private String picture;
+
     private LocalDateTime created;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    public List<Review> reviews = new ArrayList<>();
 
     public String getDisplayName(){
         return name + " / " + manufacturer.getName();

@@ -1,15 +1,13 @@
 package pl.example.electro.entity;
 
-import org.springframework.security.core.GrantedAuthority;
-import pl.example.electro.entity.Adres;
-import pl.example.electro.entity.Role;
+import pl.example.electro.validation.UserEditValidationGroup;
 import pl.example.electro.validation.UserLoginValidationGroup;
 import pl.example.electro.validation.UserRegisterValidationGroup;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.util.Collection;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -20,24 +18,27 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Email(groups = {UserLoginValidationGroup.class})
-    @NotBlank(groups = {UserLoginValidationGroup.class})
+    @Email(groups = {UserEditValidationGroup.class,UserLoginValidationGroup.class,  UserRegisterValidationGroup.class})
+    @NotBlank(groups = {UserEditValidationGroup.class,UserLoginValidationGroup.class,  UserRegisterValidationGroup.class})
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotBlank(groups = {UserLoginValidationGroup.class, UserRegisterValidationGroup.class})
+    @NotBlank(groups = {UserEditValidationGroup.class,UserLoginValidationGroup.class,  UserRegisterValidationGroup.class})
+    @Size(min = 7, message = "Password must have at least 7 characters")
     private String password;
 
-    private boolean enabled;
-
-    @NotBlank
+    @NotBlank(groups = {UserEditValidationGroup.class, UserRegisterValidationGroup.class}, message = "First name must not be empty")
+    @Size(min = 1, max = 20, groups = {UserEditValidationGroup.class, UserRegisterValidationGroup.class}, message = "First name can have up to 20 characters")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(groups = {UserEditValidationGroup.class, UserRegisterValidationGroup.class}, message = "Last name must not be empty")
+    @Size(min = 1, max = 60, groups = {UserEditValidationGroup.class, UserRegisterValidationGroup.class}, message = "Last name can have up to 60 characters")
     private String lastName;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Adres adres;
+
+    private boolean enabled;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
