@@ -29,8 +29,8 @@ public class HomeController {
         return productService.getSampleProducts();
     }
 
-    @RequestMapping("")
-    public String homePage(Model model, HttpSession session) {
+    @RequestMapping("/")
+    public String getHomePage(Model model, HttpSession session) {
         session.setAttribute("highPrice", productService.getHigh());
         List<Manufacturer> manufacturers = manufacturerService.findAll();
         session.setAttribute("manufacturers", manufacturers);
