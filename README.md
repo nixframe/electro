@@ -17,12 +17,12 @@ Application needs time to deploy and to access remote db so a little bit of pati
 * Bootstrap
 
 
-# In prgress
+# In progress
 Project is still under development. Next features to be included:
 
--[x] Custom validaion groups
--[ ] Converters form some entities
--[ ] Service with Java Mail Sender for account activation and newsletter.
--[ ] JavaScript paralax effect
--[ ] mayyybe views conversion to thymeleaf
+- [x] Custom validaion groups
+- [ ] Converters form some entities
+- [ ] Service with Java Mail Sender for account activation and newsletter.
+- [ ] JavaScript paralax effect
+- [ ] mayyybe views conversion to thymeleaf
 
